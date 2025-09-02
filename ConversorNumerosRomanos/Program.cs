@@ -4,19 +4,43 @@
     {
         static void Main(string[] args)
         {
-            Dictionary<string, int> numeroRomanos = new Dictionary<string, int>();
-            numeroRomanos.Add("I", 1);
-            numeroRomanos.Add("V", 5);
-            numeroRomanos.Add("X", 10);
-            numeroRomanos.Add("L", 50);
-            numeroRomanos.Add("C", 100);
-            numeroRomanos.Add("D", 500);
-            numeroRomanos.Add("M", 1000);
+            Dictionary<char, int> numeroRomanos = new Dictionary<char, int>() {
+                { 'I', 1 },
+                { 'V', 5 },
+                { 'X', 10},
+                { 'L', 50},
+                { 'C', 100},
+                { 'D', 500},
+                { 'M', 1000}
+        };
+            Console.WriteLine("Digite el numero romano que quiere convertir: ");
 
-            int numeroEntrante;
+            string numeroEnRomanos = Console.ReadLine().ToUpper();
+            int numeroFinal = 0;
 
-            
+            for (int i = 0; i < numeroEnRomanos.Length; i++)
+            {
+                int valorActual = numeroRomanos[numeroEnRomanos[i]];
+                
+                if(i+1<numeroEnRomanos.Length)
+                {
+                    int valorSiguiente = numeroRomanos[numeroEnRomanos[i+1]];
 
+                    if(valorActual< valorSiguiente )
+                    {
+                        numeroFinal -= valorActual;
+                    }
+                    else
+                    {
+                        numeroFinal += valorActual;
+                    }
+                }
+                else
+                {
+                    numeroFinal += valorActual;
+                }
+            }
+            Console.WriteLine($"El número romano {numeroEnRomanos} es igual a {numeroFinal}");
 
         }
 
