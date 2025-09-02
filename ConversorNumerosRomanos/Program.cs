@@ -20,6 +20,13 @@
 
             for (int i = 0; i < numeroEnRomanos.Length; i++)
             {
+
+                if (numeroEnRomanos.Contains("IIII") || numeroEnRomanos.Contains("VV") || numeroEnRomanos.Contains("XXXX") || numeroEnRomanos.Contains("LL")||
+                    numeroEnRomanos.Contains("CCCC") || numeroEnRomanos.Contains("DD") || numeroEnRomanos.Contains("MMMM"))
+                {
+                    Console.WriteLine("Numero romano invalido por exceso de repeticiones.");
+                    return;
+                }
                 int valorActual = numeroRomanos[numeroEnRomanos[i]];
                 
                 if(i+1<numeroEnRomanos.Length)
